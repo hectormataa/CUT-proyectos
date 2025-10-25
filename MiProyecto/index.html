@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Consultorio San Ángel · CDMX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!--
+        Comentarios en español: variables de diseño y estilos principales.
+        He simplificado el CSS, conservando esquema de colores y estructura básica.
+    -->
+    <style>
+        :root{
+            --primary:#0b5fa5;
+            --primary-dark:#093f73;
+            --muted:#65778a;
+            --bg:#f6f9fb;
+            --card:#ffffff;
+            --radius:12px;
+            --maxw:1100px;
+        }
+
+        /* Reset y base */
+        *{box-sizing:border-box}
+        body{
+            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin:0;
+            background:var(--bg);
+            color:#0f1724;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        /* Header / navegación */
+        header{
+            background:linear-gradient(90deg,var(--primary), var(--primary-dark));
+            color:#fff;
+            padding:16px 0;
+        }
+        .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+        nav{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+        .brand{display:flex; align-items:center; gap:12px;}
+        .logo{width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; font-weight:700}
+        nav ul{display:flex; gap:16px; list-style:none; margin:0; padding:0}
+        nav a{color:rgba(255,255,255,0.95); text-decoration:none; font-weight:600}
+        .cta{background:#fff; color:var(--primary); padding:8px 12px; border-radius:8px; font-weight:600; text-decoration:none}
+
+        /* Banner simple: sustituye al hero complejo anterior */
+        /* Comentario: banner minimalista con nombre, dirección y botón de cita */
+        .banner{
+            max-width:var(--maxw);
+            margin:20px auto;
+            padding:18px;
+            border-radius:var(--radius);
+            background:var(--card);
+            box-shadow:0 6px 20px rgba(9,63,115,0.06);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+        }
+        .banner-info{flex:1}
+        .banner h2{margin:0 0 6px; color:var(--primary-dark); font-size:1.4rem}
+        .banner p{margin:0; color:var(--muted); font-size:0.95rem}
+        .banner .btn{background:var(--primary); color:#fff; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700}
+
+        /* Servicios tarjetas */
+        .cards{max-width:var(--maxw); margin:18px auto; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:0 20px}
+        .service{background:var(--card); padding:14px; border-radius:10px; text-align:center; box-shadow:0 6px 18px rgba(12,46,78,0.04)}
+        .service .icon{font-size:24px; color:var(--primary); margin-bottom:6px}
+        .service h3{margin:6px 0 6px; font-size:1rem}
+        .service p{margin:0; color:var(--muted); font-size:0.92rem}
+
+        /* Sección centrada para el formulario */
+        /* Comentario: eliminamos la lista de médicos y centramos el panel de cita */
+        .main-grid{
+            max-width:var(--maxw);
+            margin:18px auto;
+            padding:0 20px;
+            display:flex;
+            justify-content:center; /* centra el panel horizontalmente */
+            align-items:flex-start;
+        }
+
+        .panel{
+            background:var(--card);
+            padding:18px;
+            border-radius:12px;
+            box-shadow:0 8px 30px rgba(12,46,78,0.05);
+            width:100%;
+            max-width:640px; /* ancho máximo del formulario centrado */
+        }
+
+        .field{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+        label{font-size:0.88rem; color:var(--muted)}
+        input[type="text"], input[type="email"], input[type="date"], input[type="time"], select, textarea{
+            padding:9px 10px; border:1px solid #e6eef6; border-radius:8px; font-size:0.95rem; outline:none; background:#fff
+        }
+        textarea{resize:vertical; min-height:80px}
+        .submit{background:var(--primary); color:#fff; padding:10px 12px; width:100%; border-radius:8px; border:0; font-weight:700; cursor:pointer}
+        .meta{font-size:0.9rem; color:var(--muted); margin-top:8px}
+
+        /* Footer */
+        footer{max-width:var(--maxw); margin:28px auto 20px auto; padding:18px 20px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:12px}
+        .chip{background:#fff; padding:8px 12px; border-radius:999px; box-shadow:0 6px 18px rgba(11,95,165,0.06); font-weight:600; color:var(--primary)}
+
+        /* Responsive básico */
+        @media (max-width:1000px){ .cards{grid-template-columns:repeat(2,1fr)} .main-grid{padding:0 16px} }
+        @media (max-width:520px){
+            nav{flex-direction:column; align-items:flex-start}
+            .cards{grid-template-columns:1fr}
+            .banner{flex-direction:column; align-items:flex-start}
+            .panel{padding:14px}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <nav>
+                <div class="brand">
+                    <div class="logo">🍀</div>
+                    <div>
+                        <h1 style="margin:0; font-size:1.05rem">Consultorio del TREBOL</h1>
+                        <div style="font-size:0.82rem; color:rgba(255,255,255,0.9)">Atención médica — CDMX</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#cita">Pedir cita</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <a class="cta" href="#cita">Pedir cita</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner sencillo: reemplaza al hero complejo anterior -->
+        <!-- Comentario: aquí mostramos información breve y botón para agendar -->
+        <section class="banner" id="inicio" aria-label="Banner principal">
+            <div class="banner-info">
+                <h2>Consultorio San Ángel · CDMX</h2>
+                <p>Atención médica confiable en Álvaro Obregón. Consultas, vacunación y estudios básicos. Atención personalizada y rápida.</p>
+            </div>
+            <div>
+                <a class="btn" href="#cita">Agendar cita</a>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" class="cards" aria-label="Servicios">
+            <div class="service">
+                <div class="icon">🩺</div>
+                <h3>Consulta general</h3>
+                <p>Valoración clínica y manejo de seguimiento.</p>
+            </div>
+            <div class="service">
+                <div class="icon">👶</div>
+                <h3>Pediatría</h3>
+                <p>Atención para recién nacidos y niños.</p>
+            </div>
+            <div class="service">
+                <div class="icon">💉</div>
+                <h3>Vacunación</h3>
+                <p>Esquemas y asesoría en vacunas.</p>
+            </div>
+            <div class="service">
+                <div class="icon">🫀</div>
+                <h3>Cardiología</h3>
+                <p>Valoración y pruebas diagnósticas básicas.</p>
+            </div>
+        </section>
+
+        <!-- Sección principal: formulario centrado (se eliminó "Nuestro equipo") -->
+        <section class="main-grid">
+            <!-- Panel centrado que contiene el formulario -->
+            <aside id="cita" class="panel" aria-labelledby="form-title">
+                <h3 id="form-title">Agendar cita</h3>
+
+                <!-- Comentario: formulario simple que simula envío local -->
+                <form id="appointmentForm">
+                    <div class="field">
+                        <label for="nombre">Nombre completo</label>
+                        <input id="nombre" name="nombre" type="text" required placeholder="Nombre y apellido">
+                    </div>
+                    <div class="field">
+                        <label for="email">Correo electrónico</label>
+                        <input id="email" name="email" type="email" required placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono</label>
+                        <input id="telefono" name="telefono" type="text" required placeholder="55 1234 5678">
+                    </div>
+                    <div class="field">
+                        <label for="servicio">Especialidad</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Consulta general</option>
+                            <option>Pediatría</option>
+                            <option>Cardiología</option>
+                            <option>Vacunación</option>
+                        </select>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1" class="field">
+                            <label for="fecha">Fecha</label>
+                            <input id="fecha" name="fecha" type="date" required>
+                        </div>
+                        <div style="width:140px" class="field">
+                            <label for="hora">Hora</label>
+                            <input id="hora" name="hora" type="time" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="mensaje">Motivo / notas</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Síntomas, antecedentes o solicitud"></textarea>
+                    </div>
+                    <button type="submit" class="submit">Solicitar cita</button>
+                    <div class="meta">Te contactaremos para confirmar la cita. También aceptamos llamadas al <strong>(55) 1234 5678</strong>.</div>
+                </form>
+            </aside>
+        </section>
+
+        <section id="contacto" style="max-width:var(--maxw); margin:10px auto 40px; padding:0 20px;">
+            <div style="background:var(--card); border-radius:12px; padding:16px; box-shadow:0 8px 30px rgba(12,46,78,0.04); display:flex; gap:18px; align-items:center; flex-wrap:wrap;">
+                <div style="flex:1; min-width:220px">
+                    <h3 style="margin:0 0 6px">Ubicación</h3>
+                    <div class="address">2025 CUT UNIVERSIDAD, CLASE PROGRAMACION VISUAL🍀🍀🍀🍀</div>
+                </div>
+                <div style="min-width:200px">
+                    <h3 style="margin:0 0 6px">Teléfono</h3>
+                    <div style="font-weight:700">(55) 1234 5678</div>
+                </div>
+                <div style="min-width:220px">
+                    <h3 style="margin:0 0 6px">Correo</h3>
+                    <div>contacto@consultoriosanangel.mx</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="address">© 2025 CUT UNIVERSIDAD, CLASE PROGRAMACION VISUAL</div>
+    
+    </footer>
+
+    <script>
+        
+        document.getElementById('appointmentForm').addEventListener('submit', function(e){
+            e.preventDefault(); 
+
+           
+            const nombre = document.getElementById('nombre').value.trim();
+            const servicio = document.getElementById('servicio').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+
+            
+            if(!nombre || !servicio || !fecha || !hora){
+                alert('Por favor completa los campos obligatorios.');
+                return;
+            }
+
+            alert('Solicitud recibida. Pronto nos comunicaremos para confirmar la cita.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
